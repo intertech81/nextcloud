@@ -1,0 +1,9 @@
+That could be the reverse proxy. I had the same problem. The solution for me was to add the ‘overwriteprotocol’ variable to config.php and set it to “https”
+
+/opt/data/nextcloud/data/config/confg.php
+cd config/
+vim config.php
+insert the line: 'overwriteprotocol' => 'https',
+
+Nextcloud data folder^
+/opt/nextcloud/data

@@ -1,0 +1,41 @@
+version: '2'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  db:
+    image: mariadb
+    container_name: db
+    command: --init-file /data/application/init.sql
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - ./init.sql:/data/application/init.sql
+      - /opt/data/nextcloud/mysql:/var/lib/mysql
+#      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=
+      - MYSQL_USER=
+    ports:
+      - "127.0.0.1:3307:3306"
+  
+  redis:
+    image: redis:alpine
+    restart: always
+
+  app:
+    image: nextcloud
+    ports:
+      - "127.0.0.1:8080:80"
+    links:
+      - db
+    volumes:
+      - /opt/data/nextcloud/data:/opt/nextcloud/data
+      - /opt/data/nextcloud/html:/var/www/html
+    restart: always
+    environment:
+      - REDIS_HOST=redis

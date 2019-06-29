@@ -1,0 +1,1 @@
+GRANT ALL PRIVILEGES ON nextcloud.* TO nextcloud@"%" IDENTIFIED BY 'n95ow4' WITH GRANT OPTION;
