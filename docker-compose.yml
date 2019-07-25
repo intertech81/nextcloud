@@ -16,10 +16,10 @@ services:
       - /opt/data/nextcloud/mysql:/var/lib/mysql
 #      - db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=2cw9m6!@
-      - MYSQL_PASSWORD=n95ow4
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=
+      - MYSQL_USER=
     ports:
       - "127.0.0.1:3307:3306"
   
